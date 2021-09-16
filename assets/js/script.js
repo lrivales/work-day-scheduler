@@ -39,6 +39,10 @@ var timeColor = function() {
     });
 };
 
+var saveEvents = function() {
+    localStorage.setItem("events", JSON.stringify(events));
+};
+
 timeColor();
 
 $("td").on("click", function() {
@@ -46,7 +50,22 @@ $("td").on("click", function() {
 });
 
 $(".btn").on("click", function(event) {
-    console.log($(event.target));
-    text = $(event.target).closest("td").text();
-    console.log(text);
+    // Grab the element that was clicked
+    var $this = $(event.target);
+    console.log("$this: ", $this);
+
+    // Grab the parent of the element that was clicked
+    var $parent = $this.parent();
+    console.log("$parent: ", $parent);
+
+    // Grab the siblings of the parent of the element that was clicked
+    var $tdEditable = $parent.siblings("td.text-data");
+    console.log("$tdEditable: ", $tdEditable);
+
+    var $tdTime = $parent.siblings("th.time-label");
+    console.log("$tdTime: ", $tdTime);
+
+    // Grab the text from the siblings
+    console.log("$tdEditable.text(): ", $tdEditable.text());
+    console.log("$tdTime.text(): ", $tdTime.text());
 });
