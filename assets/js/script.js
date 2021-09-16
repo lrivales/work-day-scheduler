@@ -7,13 +7,13 @@ var date = moment().format("dddd, MMMM Do YYYY");
 $("#currentDay").append(date);
 
 var timeColor = function() {    
-    var now = moment().format("ddd MMM D YYYY hh:00 A ZZ").toString();
+    var now = moment().format("ddd MMM D YYYY HH").toString();
     // console.log("Now: " + now);
 
     $(".time-label").each(function () {
-        var timeLabel = $(this).text();
+        var timeLabel = $(this).attr("id");
         var strTime = moment(timeLabel, ["h", "hh"])
-        var strTime = moment(strTime).format("ddd MMM D YYYY hh:00 A ZZ").toString();
+        var strTime = moment(strTime).format("ddd MMM D YYYY HH").toString();
         // console.log("Time: " + strTime);
         
         // if now < time label
