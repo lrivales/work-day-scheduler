@@ -1,3 +1,5 @@
+var events = {};
+
 // get today's date
 var date = moment().format("dddd, MMMM Do YYYY");
 
@@ -38,3 +40,11 @@ var timeColor = function() {
 };
 
 timeColor();
+
+$("td").on("click", function() {
+    $(this).attr("contentEditable", "true");
+});
+
+$("td").on("blur", function() {
+    console.log($(".time-label").text());
+});
